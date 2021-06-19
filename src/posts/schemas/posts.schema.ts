@@ -15,6 +15,12 @@ export class Posts {
   contents: string;
 
   @Prop()
+  good: number;
+
+  @Prop()
+  views: number;
+
+  @Prop()
   comments: string[];
 }
 
