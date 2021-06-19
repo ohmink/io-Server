@@ -16,10 +16,11 @@ export class PostsService {
   }
 
   async getTagList(tag: string): Promise<Posts[]> {
-    return await this.postsModel.find({ tag }, 'title tag').exec();
+    return await this.postsModel.find({ tag }).exec();
   }
 
-  async getDetail(postsId: number) {
+  async getDetail(postsId: string) {
+    postsId = postsId.replace(':', '');
     return await this.postsModel.findOne({ _id: postsId }).exec();
   }
 

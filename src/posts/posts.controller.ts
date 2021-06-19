@@ -8,7 +8,9 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { PostsService } from './posts.service';
 import { CreatePostsDto } from './dto/create-posts.dto';
 import { UpdatePostsDto } from './dto/update-posts.dto';
@@ -30,10 +32,11 @@ export class PostsController {
   }
 
   @Get('getDetail/:id') // get 게시글 상세
-  getDetail(@Param() postsId: number) {
-    return this.postsService.getDetail(postsId);
+  getDetail(@Param() postsId: { id: string }) {
+    return this.postsService.getDetail(postsId.id);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Post('create') // 게시글 생성
   create(@Body() postsData: CreatePostsDto) {
     return this.postsService.create(postsData);
@@ -41,6 +44,7 @@ export class PostsController {
 
   @Delete('delete/:id') // 게시글 삭제
   delete(@Param('id') postsId: string) {
+    console.log(postsId);
     return this.postsService.delete(postsId);
   }
 
