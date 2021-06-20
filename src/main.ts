@@ -12,6 +12,8 @@ async function bootstrap() {
     }),
   );
 
+  console.log(process.env.PORT, process.env.JWT_SECRET);
+
   await app.listen(process.env.PORT || 5000);
 }
 bootstrap();
