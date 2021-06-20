@@ -11,6 +11,7 @@ async function bootstrap() {
       transform: true,
     }),
   );
+  console.log(process.env.PORT, process.env.JWT_SECRET);
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
