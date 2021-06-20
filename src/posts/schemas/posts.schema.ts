@@ -14,14 +14,11 @@ export class Posts {
   @Prop()
   contents: string;
 
-  @Prop()
+  @Prop({ default: 0 })
   good: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   views: number;
-
-  @Prop()
-  comments: string[];
 }
 
 export const PostsSchema = SchemaFactory.createForClass(Posts);
