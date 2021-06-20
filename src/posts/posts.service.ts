@@ -28,8 +28,8 @@ export class PostsService {
   }
 
   async create(createPostsDto: CreatePostsDto): Promise<Posts> {
-    const createdCat = new this.postsModel(createPostsDto);
-    return await createdCat.save();
+    const newPost = new this.postsModel(createPostsDto);
+    return await newPost.save();
   }
 
   async delete(postsId: string) {
