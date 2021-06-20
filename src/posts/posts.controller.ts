@@ -19,19 +19,14 @@ import { UpdatePostsDto } from './dto/update-posts.dto';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-  @Get('getAll') // get 모든 게시글
+  @Get('getAll') // 모든 게시글
   getAll() {
     const answer = this.postsService.getAll();
     if (!answer) throw new NotFoundException('Not founded!');
     return answer;
   }
 
-  @Get('getTagList') // get 태그 게시글
-  getTagList(@Query('tag') tag: string) {
-    return this.postsService.getTagList(tag);
-  }
-
-  @Get('getDetail/:id') // get 게시글 상세
+  @Get('getDetail/:id') // 게시글 상세
   getDetail(@Param() postsId: { id: string }) {
     return this.postsService.getDetail(postsId.id);
   }

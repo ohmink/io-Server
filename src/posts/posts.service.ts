@@ -21,7 +21,10 @@ export class PostsService {
 
   async getDetail(postsId: string) {
     postsId = postsId.replace(':', '');
-    return await this.postsModel.findOne({ _id: postsId }).exec();
+    const posts = await this.postsModel.findOne({ _id: postsId }).exec();
+    await this.increaseViews(postsId, posts.views + 1);
+    posts.views = posts.views + 1;
+    return posts;
   }
 
   async create(createPostsDto: CreatePostsDto): Promise<Posts> {
@@ -43,6 +46,12 @@ export class PostsService {
           contents: updateData.contents,
         },
       )
+      .exec();
+  }
+
+  async increaseViews(postsId: string, viewCount: number) {
+    return await this.postsModel
+      .updateOne({ _id: postsId }, { views: viewCount })
       .exec();
   }
 }
