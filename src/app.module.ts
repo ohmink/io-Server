@@ -6,7 +6,9 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://root:dhals02@localhost:27017/'),
+    MongooseModule.forRoot(
+      process.env.MONGODB_URL || 'mongodb://root:dhals02@localhost:27017/',
+    ),
     PostsModule,
     UserModule,
     AuthModule,
