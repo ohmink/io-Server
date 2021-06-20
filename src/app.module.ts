@@ -7,8 +7,7 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      process.env.MONGODB_URL ||
-        'mongodb+srv://ohmink:dhals02@cluster0.l8qex.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+      'mongodb+srv://ohmink:dhals02@cluster0.l8qex.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
       },
