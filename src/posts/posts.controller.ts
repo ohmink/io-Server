@@ -38,7 +38,6 @@ export class PostsController {
 
   @Delete('delete/:id') // 게시글 삭제
   delete(@Param('id') postsId: string) {
-    console.log(postsId);
     return this.postsService.delete(postsId);
   }
 
