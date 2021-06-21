@@ -23,7 +23,10 @@ export class UserService {
 
   @Cron('0 */20 23,0-14 * * *')
   async wakeUp() {
-    console.log('Wake up with Cron');
-    this.httpService.get('https://ohmink-blog-server.herokuapp.com');
+    const res = await this.httpService
+      .get('https://ohmink-blog-server.herokuapp.com/posts/getAll')
+      .toPromise();
+
+    console.log('Wake up with Cron, res status is ', res.status);
   }
 }
