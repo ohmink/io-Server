@@ -21,7 +21,7 @@ export class UserService {
     return await newMaster.save();
   }
 
-  @Cron('0 */20 23, 0-14 * * *')
+  @Cron('0 */20 23,0-14 * * *')
   async wakeUp() {
     const res = await this.httpService
       .get('https://ohmink-blog-server.herokuapp.com/posts/getAll')
