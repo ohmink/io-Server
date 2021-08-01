@@ -36,11 +36,13 @@ export class PostsController {
     return this.postsService.create(postsData);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Delete('delete/:id') // 게시글 삭제
   delete(@Param('id') postsId: string) {
     return this.postsService.delete(postsId);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Patch('patch/:id') // 게시글 수정
   update(@Param('id') postsId: string, @Body() updateData: UpdatePostsDto) {
     return this.postsService.update(postsId, updateData);
