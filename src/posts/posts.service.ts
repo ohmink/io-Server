@@ -15,7 +15,7 @@ export class PostsService {
     return (await this.postsModel.find().select('-contents').exec()).reverse();
   }
 
-  async getTagList(tag: string): Promise<Posts[]> {
+  async getListByTag(tag: string): Promise<Posts[]> {
     tag = tag.replace(':', '');
     return await this.postsModel.find({ tag }).select('-contents').exec();
   }
