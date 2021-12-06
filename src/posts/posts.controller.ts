@@ -25,6 +25,13 @@ export class PostsController {
     return answer;
   }
 
+  @Get('getTagList/:tag')
+  getTagList(@Param() tag: string) {
+    const answer = this.postsService.getTagList(tag);
+    if (!answer) throw new NotFoundException('Not founded!');
+    return answer;
+  }
+
   @Get('getDetail/:id')
   getDetail(@Param() postsId: { id: string }) {
     return this.postsService.getDetail(postsId.id);
