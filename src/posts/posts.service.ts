@@ -17,7 +17,7 @@ export class PostsService {
 
   async getListByTag(tag: string): Promise<Posts[]> {
     tag = tag.replace(':', '');
-    return await this.postsModel.find({ tag }).select('-contents').exec();
+    return await this.postsModel.find({ tag: tag }).select('-contents').exec();
   }
 
   async getDetail(postsId: string) {
