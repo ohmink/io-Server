@@ -12,7 +12,7 @@ export class PostsService {
   ) {}
 
   async getAll(): Promise<Posts[]> {
-    return (await this.postsModel.find().exec()).reverse();
+    return (await this.postsModel.find().select('-title').exec()).reverse();
   }
 
   async getTagList(tag: string): Promise<Posts[]> {
