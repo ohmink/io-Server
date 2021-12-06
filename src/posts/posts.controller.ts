@@ -25,7 +25,7 @@ export class PostsController {
     return answer;
   }
 
-  @Get('getTagList/:tag')
+  @Get('getListByTag/:tag')
   getListByTag(@Param() tag: string) {
     const answer = this.postsService.getListByTag(tag);
     if (!answer) throw new NotFoundException('Not founded!');
